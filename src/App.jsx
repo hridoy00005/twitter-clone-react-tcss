@@ -1,22 +1,23 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Sidebar from "./components/Sidebar"
+import Feed from "./components/Feed";
+import Widgets from "./components/Widgets";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="app">
-      <h1 className="text-3xl font-bold underline text-center text-red-400">
-        Hello world!
-      </h1>
+    <div className="app flex h-screen max-w-[1300px] mx-auto px-3 py-0">
 
       {/* Sidebar */}
       <Sidebar />
+
       {/* Feed */}
+      <Feed />
+
       {/* Widgets */}
+      <Widgets />
     </div>
   );
 }

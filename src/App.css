@@ -1,4 +1,13 @@
-#root {
+/* Hidding srollbar */
+.feed::-webkit-scrollbar {
+  display: none; /*chrome, safari, opera, edge*/
+}
+
+.feed {
+  scrollbar-width: none; /*firefox*/
+}
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +48,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
