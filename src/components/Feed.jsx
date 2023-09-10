@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TweetBox from "./TweetBox";
 import Post from "./Post";
+import db from "./firebase";
+import FlipMove from "react-flip-move";
+// import avatar from "../images/Avatar.jpg";
 
 const Feed = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    db.collection("posts").onSnapshot((snapshot) =>
+      setPosts(snapshot.docs.map((doc) => doc.data()))
+    );
+  }, []);
   return (
     <div className="feed flex-[0.4] border-r border-[#e8f5fe] min-w-fit overflow-y-scroll">
       {/* Header */}
@@ -14,8 +24,19 @@ const Feed = () => {
       <TweetBox />
 
       {/* Post */}
-      <Post />
-     
+      <FlipMove>
+        {posts.map((post) => (
+          <Post
+          key={post.text}
+            displayName={post.displayName}
+            username={post.username}
+            verified={post.verified}
+            text={post.text}
+            image={post.image}
+            avatar={post.avatar}
+          />
+        ))}
+      </FlipMove>
     </div>
   );
 };

@@ -1,4 +1,5 @@
-
+./src/components/firebase.json
+firebase.js
 .env
 # Logs
 logs
